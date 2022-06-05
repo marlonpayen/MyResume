@@ -107,7 +107,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif}
           <h5 class="w3-opacity"><b>{{ education.school }} - {{ education.place }}</b></h5>
           <h6 class="w3-text-light-blue"><img class="small_icon" src="{{ MEDIA_URL }}calendar.png">{{ education.start_date|date:"M Y"}} - {{ education.end_date|date:"M Y" }}</h6>
           <p>{{ education.degree }}</p>
-          <hr>
         </div>
         
         {% endfor %}
@@ -125,11 +124,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif}
 
 <footer class="w3-container w3-light-blue w3-center w3-margin-top">
   <p>Find me on social media.</p>
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
   <a href="https://www.linkedin.com/in/marlon-payen-67236b65/" target="_blank">	
   	<img class="small_icon" alt="LinkedIn" src="{{ MEDIA_URL }}linkedin.png">
   </a>
