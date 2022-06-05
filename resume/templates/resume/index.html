@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Marlon Payen - Resume</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/resume/style.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4 w3-border-white">
+        <div class="w3-display-container">
+          <img class="profile" src="{{ contact.image.url }}" style="width:70%" alt="Image not found">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>{{ contact.full_name }}</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><img class="small_icon" src="{{ MEDIA_URL }}job.png">{{ contact.title }}</p>
+          <p><img class="small_icon" src="{{ MEDIA_URL }}location.png">{{ contact.city }}, {{ contact.get_country_display }}</p>
+          <p><img class="small_icon" src="{{ MEDIA_URL }}email.png">{{ contact.email }}</p>
+          <p><img class="small_icon" src="{{ MEDIA_URL }}phone.png">{{ contact.phone_number }}</p>
+          <hr>
+
+          <p class="w3-large"><b><img class="icon" src="{{ MEDIA_URL }}resume.png">Skills</b></p>
+          
+          {% for skill in skills %}
+          <p>{{ skill.name}} - Proficiency : {{ skill.get_proficiency_display }}</p>
+          {% endfor %}
+          
+          <br>
+		  
+          <p class="w3-large w3-text-theme"><b><img class="icon" src="{{ MEDIA_URL }}communication.png">Languages</b></p>
+          {% for language in languages %}
+          
+          <!-- Build gauge to show level of language proficiency -->
+		  
+          <p>{{ language.get_name_display}} - Proficiency : {{ language.get_proficiency_display }}</p>
+          {% endfor %}
+          
+          <p>German</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-light-blue" style="height:24px;width:25%"></div>
+          </div>
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    
+    <!-- About me -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom w3-border-white">
+        <h2 class="w3-text-grey w3-padding-16"><img class="icon" src="{{ MEDIA_URL }}decision.png">About me</h2>
+          
+        <div class="w3-container">    <!-- <span class="w3-tag w3-teal w3-round">Current</span>  --> </time>
+          <p>{{ contact.about_me }}</p>
+          <hr>
+        </div>
+      </div>
+ 
+      
+      <!-- Work experience -->
+      <div class="w3-container w3-card w3-white w3-margin-bottom w3-border-white">
+        <h2 class="w3-text-grey w3-padding-16"><img class="icon" src="{{ MEDIA_URL }}business.png">Work Experience</h2>
+        {% for work_experience in work_experiences %}
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>{{ work_experience.role }} - {{ work_experience.city }}, {{ work_experience.get_country_display }}</b></h5>
+          <h6 class="w3-text-light-blue"><img class="small_icon" src="{{ MEDIA_URL }}calendar.png">
+          	{{ work_experience.start_date|date:"M Y" }} - 
+          	{% if work_experience.is_current %} 
+          		<span class="w3-tag w3-light-blue w3-round">Current</span>
+          	{% else %}
+          		{{ work_experience.end_date|date:"M Y" }}    
+          	{% endif %}
+          </h6>
+          <p>{{ work_experience.description }}</p>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+
+		
+	  <!-- Education -->
+      <div class="w3-container w3-card w3-white w3-border-white">
+        <h2 class="w3-text-grey w3-padding-16"><img class="icon" src="{{ MEDIA_URL }}degree.png">Education</h2>
+        
+        {% for education in educations %}
+        
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>{{ education.school }} - {{ education.place }}</b></h5>
+          <h6 class="w3-text-light-blue"><img class="small_icon" src="{{ MEDIA_URL }}calendar.png">{{ education.start_date|date:"M Y"}} - {{ education.end_date|date:"M Y" }}</h6>
+          <p>{{ education.degree }}</p>
+          <hr>
+        </div>
+        
+        {% endfor %}
+        
+      </div>  
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+<footer class="w3-container w3-light-blue w3-center w3-margin-top">
+  <p>Find me on social media.</p>
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <a href="https://www.linkedin.com/in/marlon-payen-67236b65/" target="_blank">	
+  	<img class="small_icon" alt="LinkedIn" src="{{ MEDIA_URL }}linkedin.png">
+  </a>
+  <p>Copyright 2022, Marlon Payen</p>
+</footer>
+
+</body>
+</html>
+
